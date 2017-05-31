@@ -1,2 +1,2 @@
 # link-sharer
-Link sharer helper for sharing links on social networks
+This project is under construction and is not yet complete. Please check back later.

@@ -1,0 +1,32 @@
+{
+  "name": "michaelhall/link-sharer",
+  "description": "Link sharer helper for sharing links on social networks",
+  "license": "MIT",
+  "keywords": [
+    "link",
+    "sharer"
+  ],
+  "authors": [
+    {
+      "name": "Michael Hall",
+      "homepage": "https://michaelhall.se/"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "datatypes/datatypes": "~1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "LinkSharer\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LinkSharer\\Tests\\": "tests"
+    }
+  }
+}

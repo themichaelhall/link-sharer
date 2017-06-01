@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace LinkSharer\Sharers;
 
@@ -17,11 +18,11 @@ class TwitterSharer
      * @param string       $text     The text.
      * @param string[]     $hashtags The hashtags.
      */
-    public function __construct(UrlInterface $url, string $text, array $hashtags = [])
+    public function __construct(UrlInterface $url, string $text = '', array $hashtags = [])
     {
         $this->url = $url;
         $this->text = $text;
-        $this->hashTags = $hashtags;
+        $this->hashtags = $hashtags;
     }
 
     /**
@@ -31,13 +32,21 @@ class TwitterSharer
      */
     public function getShareUrl(): UrlInterface
     {
-        $hashTagsString = implode(' ', array_map(function (string $hashTag) {
-            return '#' . $hashTag;
-        }, $this->hashTags));
+        $parts = [];
 
-        return Url::parse(
-            'https://twitter.com/home?status=' . rawurlencode($this->text . ' ' . $this->url->__toString() . ($hashTagsString !== '' ? ' ' . $hashTagsString : ''))
-        );
+        if ($this->text !== '') {
+            $parts[] = $this->text;
+        }
+
+        $parts[] = $this->url->__toString();
+
+        if (count($this->hashtags) > 0) {
+            $parts[] = implode(' ', array_map(function (string $hashtag) {
+                return '#' . $hashtag;
+            }, $this->hashtags));
+        }
+
+        return Url::parse('https://twitter.com/home?status=' . rawurlencode(implode(' ', $parts)));
     }
 
     /**
@@ -63,5 +72,5 @@ class TwitterSharer
     /**
      * @var string[] My hashtags.
      */
-    private $hashTags;
+    private $hashtags;
 }

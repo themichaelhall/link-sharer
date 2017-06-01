@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace LinkSharer\Tests\Sharers;
 
@@ -15,6 +16,16 @@ class TwitterSharerTest extends TestCase
      * Test getShareUrl method.
      */
     public function testGetShareUrl()
+    {
+        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'));
+
+        self::assertSame('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->getShareUrl()->__toString());
+    }
+
+    /**
+     * Test getShareUrl with text method.
+     */
+    public function testGetShareUrlWithText()
     {
         $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter');
 
@@ -35,6 +46,16 @@ class TwitterSharerTest extends TestCase
      * Test __toString method.
      */
     public function testToString()
+    {
+        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'));
+
+        self::assertSame('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->__toString());
+    }
+
+    /**
+     * Test __toString method.
+     */
+    public function testToStringWithText()
     {
         $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter');
 

@@ -8,7 +8,7 @@ use DataTypes\Interfaces\UrlInterface;
 use LinkSharer\Sharers\TwitterSharer;
 
 /**
- * Class LinkSharer
+ * Class LinkSharer.
  */
 class LinkSharer
 {

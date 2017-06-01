@@ -9,8 +9,6 @@ use LinkSharer\Sharers\TwitterSharer;
 
 /**
  * Class LinkSharer
- *
- * @package LinkSharer
  */
 class LinkSharer
 {

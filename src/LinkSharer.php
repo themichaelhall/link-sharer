@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LinkSharer;
 
 use DataTypes\Interfaces\UrlInterface;
+use LinkSharer\Sharers\FacebookSharer;
 use LinkSharer\Sharers\TwitterSharer;
 
 /**
@@ -24,6 +25,16 @@ class LinkSharer
         $this->url = $url;
         $this->text = $text;
         $this->hashtags = $hashtags;
+    }
+
+    /**
+     * Returns the Facebook sharer.
+     *
+     * @return FacebookSharer The Facebook sharer.
+     */
+    public function getFacebookSharer(): FacebookSharer
+    {
+        return new FacebookSharer($this->url);
     }
 
     /**

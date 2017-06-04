@@ -22,6 +22,7 @@ class LinkSharerTest extends TestCase
 
         self::assertSame('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getTwitterSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
+        self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -33,6 +34,7 @@ class LinkSharerTest extends TestCase
 
         self::assertSame('https://twitter.com/home?status=I%20am%20sharing%20this.%20https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getTwitterSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
+        self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -44,5 +46,6 @@ class LinkSharerTest extends TestCase
 
         self::assertSame('https://twitter.com/home?status=I%20am%20sharing%20this.%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23sharing%20%23this', $linkSharer->getTwitterSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
+        self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
     }
 }

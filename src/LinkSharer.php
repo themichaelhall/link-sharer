@@ -6,6 +6,7 @@ namespace LinkSharer;
 
 use DataTypes\Interfaces\UrlInterface;
 use LinkSharer\Sharers\FacebookSharer;
+use LinkSharer\Sharers\GooglePlusSharer;
 use LinkSharer\Sharers\TwitterSharer;
 
 /**
@@ -35,6 +36,16 @@ class LinkSharer
     public function getFacebookSharer(): FacebookSharer
     {
         return new FacebookSharer($this->url);
+    }
+
+    /**
+     * Returns the Google Plus sharer.
+     *
+     * @return GooglePlusSharer The Google Plus sharer.
+     */
+    public function getGooglePlusSharer(): GooglePlusSharer
+    {
+        return new GooglePlusSharer($this->url);
     }
 
     /**

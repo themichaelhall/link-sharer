@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file is a part of the link-sharer package.
+ *
+ * Read more at https://github.com/themichaelhall/link-sharer
+ */
 
 declare(strict_types=1);
 
@@ -9,11 +14,15 @@ use DataTypes\Url;
 
 /**
  * Twitter sharer.
+ *
+ * @since 1.0.0
  */
 class TwitterSharer
 {
     /**
      * Constructs a TwitterSharer.
+     *
+     * @since 1.0.0
      *
      * @param UrlInterface $url      The url.
      * @param string       $text     The text.
@@ -28,6 +37,8 @@ class TwitterSharer
 
     /**
      * Returns the share url.
+     *
+     * @since 1.0.0
      *
      * @return UrlInterface The share url.
      */
@@ -52,6 +63,8 @@ class TwitterSharer
 
     /**
      * Returns the share url as a string.
+     *
+     * @since 1.0.0
      *
      * @return string The share url as a string.
      */

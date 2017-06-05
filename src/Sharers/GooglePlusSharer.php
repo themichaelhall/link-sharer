@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file is a part of the link-sharer package.
+ *
+ * Read more at https://github.com/themichaelhall/link-sharer
+ */
 
 declare(strict_types=1);
 
@@ -9,11 +14,15 @@ use DataTypes\Url;
 
 /**
  * Google Plus sharer.
+ *
+ * @since 1.0.0
  */
 class GooglePlusSharer
 {
     /**
      * Constructs a GooglePlusSharer.
+     *
+     * @since 1.0.0
      *
      * @param UrlInterface $url The url.
      */
@@ -25,6 +34,8 @@ class GooglePlusSharer
     /**
      * Returns the share url.
      *
+     * @since 1.0.0
+     *
      * @return UrlInterface The share url.
      */
     public function getShareUrl(): UrlInterface
@@ -34,6 +45,8 @@ class GooglePlusSharer
 
     /**
      * Returns the share url as a string.
+     *
+     * @since 1.0.0
      *
      * @return string The share url as a string.
      */

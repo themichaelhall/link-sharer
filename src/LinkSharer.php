@@ -6,12 +6,12 @@
  */
 declare(strict_types=1);
 
-namespace LinkSharer;
+namespace MichaelHall\LinkSharer;
 
 use DataTypes\Interfaces\UrlInterface;
-use LinkSharer\Sharers\FacebookSharer;
-use LinkSharer\Sharers\GooglePlusSharer;
-use LinkSharer\Sharers\TwitterSharer;
+use MichaelHall\LinkSharer\Sharers\FacebookSharer;
+use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
+use MichaelHall\LinkSharer\Sharers\TwitterSharer;
 
 /**
  * Class LinkSharer.

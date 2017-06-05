@@ -6,7 +6,7 @@
  */
 declare(strict_types=1);
 
-namespace LinkSharer\Sharers;
+namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;

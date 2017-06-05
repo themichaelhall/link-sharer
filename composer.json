@@ -21,12 +21,12 @@
   },
   "autoload": {
     "psr-4": {
-      "LinkSharer\\": "src"
+      "MichaelHall\\LinkSharer\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LinkSharer\\Tests\\": "tests"
+      "MichaelHall\\LinkSharer\\Tests\\": "tests"
     }
   }
 }

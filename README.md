@@ -33,7 +33,7 @@ $url = \DataTypes\Url::parse('http://example.com/');
 $text = 'My Webpage';
 $hashtags = ['my', 'webpage'];
 
-$linkSharer = new \LinkSharer\LinkSharer($url, $text, $hashtags);
+$linkSharer = new \MichaelHall\LinkSharer\LinkSharer($url, $text, $hashtags);
 
 // Prints https://twitter.com/home?status=...
 echo $linkSharer->getTwitterSharer();

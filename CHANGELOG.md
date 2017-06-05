@@ -1,3 +1,5 @@
+## Unreleased
+
 ## [1.1.0] - 2017-06-05
 ### Added
 - LinkedIn sharer class.

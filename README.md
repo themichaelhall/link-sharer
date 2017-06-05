@@ -17,7 +17,7 @@ Link sharer helper for sharing links on social networks.
 ## Install with composer
 
 ``` bash
-$ composer require "michaelhall/link-sharer:~1.0"
+$ composer require "michaelhall/link-sharer:~1.1"
 ```
 
 ## Basic usage
@@ -33,7 +33,7 @@ $url = \DataTypes\Url::parse('http://example.com/');
 $text = 'My Webpage';
 $hashtags = ['my', 'webpage'];
 
-$linkSharer = new \LinkSharer\LinkSharer($url, $text, $hashtags);
+$linkSharer = new \MichaelHall\LinkSharer\LinkSharer($url, $text, $hashtags);
 
 // Prints https://twitter.com/home?status=...
 echo $linkSharer->getTwitterSharer();
@@ -43,6 +43,7 @@ echo $linkSharer->getFacebookSharer();
 
 // And so on...
 echo $linkSharer->getGooglePlusSharer();
+echo $linkSharer->getLinkedInSharer();
 ```
 
 ## License

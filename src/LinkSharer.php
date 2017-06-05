@@ -6,12 +6,13 @@
  */
 declare(strict_types=1);
 
-namespace LinkSharer;
+namespace MichaelHall\LinkSharer;
 
 use DataTypes\Interfaces\UrlInterface;
-use LinkSharer\Sharers\FacebookSharer;
-use LinkSharer\Sharers\GooglePlusSharer;
-use LinkSharer\Sharers\TwitterSharer;
+use MichaelHall\LinkSharer\Sharers\FacebookSharer;
+use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
+use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
+use MichaelHall\LinkSharer\Sharers\TwitterSharer;
 
 /**
  * Class LinkSharer.
@@ -58,6 +59,18 @@ class LinkSharer
     public function getGooglePlusSharer(): GooglePlusSharer
     {
         return new GooglePlusSharer($this->url);
+    }
+
+    /**
+     * Returns the LinkedIn sharer.
+     *
+     * @since 1.1.0
+     *
+     * @return LinkedInSharer The LinkedIn sharer.
+     */
+    public function getLinkedInSharer(): LinkedInSharer
+    {
+        return new LinkedInSharer($this->url, $this->text);
     }
 
     /**

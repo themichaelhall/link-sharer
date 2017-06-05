@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LinkSharer\Tests\Sharers;
+namespace MichaelHall\LinkSharer\Tests\Sharers;
 
 use DataTypes\Url;
-use LinkSharer\Sharers\FacebookSharer;
+use MichaelHall\LinkSharer\Sharers\FacebookSharer;
 use PHPUnit\Framework\TestCase;
 
 /**

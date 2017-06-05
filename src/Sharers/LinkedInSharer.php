@@ -12,40 +12,50 @@ use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
 
 /**
- * Google Plus sharer.
+ * LinkedIn sharer.
  *
- * @since 1.0.0
+ * @since 1.1.0
  */
-class GooglePlusSharer
+class LinkedInSharer
 {
     /**
-     * Constructs a GooglePlusSharer.
+     * Constructs a LinkedInSharer.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
-     * @param UrlInterface $url The url.
+     * @param UrlInterface $url  The url.
+     * @param string       $text The text.
      */
-    public function __construct(UrlInterface $url)
+    public function __construct(UrlInterface $url, string $text = '')
     {
         $this->url = $url;
+        $this->text = $text;
     }
 
     /**
      * Returns the share url.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @return UrlInterface The share url.
      */
     public function getShareUrl(): UrlInterface
     {
-        return Url::parse('https://plus.google.com/share?url=' . rawurlencode($this->url->__toString()));
+        $parts = [];
+
+        $parts[] = 'url=' . rawurlencode($this->url->__toString());
+
+        if ($this->text !== '') {
+            $parts[] = 'title=' . rawurlencode($this->text);
+        }
+
+        return Url::parse('https://www.linkedin.com/shareArticle?mini=true&' . implode('&', $parts));
     }
 
     /**
      * Returns the share url as a string.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @return string The share url as a string.
      */
@@ -58,4 +68,9 @@ class GooglePlusSharer
      * @var Url My url.
      */
     private $url;
+
+    /**
+     * @var string My text.
+     */
+    private $text;
 }

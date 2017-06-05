@@ -64,7 +64,7 @@ class LinkSharer
     /**
      * Returns the LinkedIn sharer.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @return LinkedInSharer The LinkedIn sharer.
      */

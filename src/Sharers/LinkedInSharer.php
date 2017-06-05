@@ -14,14 +14,14 @@ use DataTypes\Url;
 /**
  * LinkedIn sharer.
  *
- * @since 1.0.0
+ * @since 1.1.0
  */
 class LinkedInSharer
 {
     /**
      * Constructs a LinkedInSharer.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @param UrlInterface $url  The url.
      * @param string       $text The text.
@@ -35,7 +35,7 @@ class LinkedInSharer
     /**
      * Returns the share url.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @return UrlInterface The share url.
      */
@@ -55,7 +55,7 @@ class LinkedInSharer
     /**
      * Returns the share url as a string.
      *
-     * @since 1.0.0
+     * @since 1.1.0
      *
      * @return string The share url as a string.
      */

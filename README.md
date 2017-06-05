@@ -17,7 +17,7 @@ Link sharer helper for sharing links on social networks.
 ## Install with composer
 
 ``` bash
-$ composer require "michaelhall/link-sharer:~1.0"
+$ composer require "michaelhall/link-sharer:~1.1"
 ```
 
 ## Basic usage

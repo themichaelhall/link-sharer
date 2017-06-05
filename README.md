@@ -8,4 +8,43 @@
 [![Latest Stable Version](https://poser.pugx.org/michaelhall/link-sharer/v/stable)](https://packagist.org/packages/michaelhall/link-sharer)
 [![Total Downloads](https://poser.pugx.org/michaelhall/link-sharer/downloads)](https://packagist.org/packages/michaelhall/link-sharer)
 
-This project is under construction and is not yet complete. Please check back later.
+Link sharer helper for sharing links on social networks.
+
+## Requirements
+
+- PHP >= 7.0
+
+## Install with composer
+
+``` bash
+$ composer require "michaelhall/link-sharer:~1.0"
+```
+
+## Basic usage
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+$url = \DataTypes\Url::parse('http://example.com/');
+
+// $text and $hashtags parameters are optional.
+$text = 'My Webpage';
+$hashtags = ['my', 'webpage'];
+
+$linkSharer = new \LinkSharer\LinkSharer($url, $text, $hashtags);
+
+// Prints https://twitter.com/home?status=...
+echo $linkSharer->getTwitterSharer();
+
+// Prints https://www.facebook.com/sharer/sharer.php?u=...
+echo $linkSharer->getFacebookSharer();
+
+// And so on...
+echo $linkSharer->getGooglePlusSharer();
+```
+
+## License
+
+MIT

@@ -12,12 +12,12 @@ Link sharer helper for sharing links on social networks.
 
 ## Requirements
 
-- PHP >= 7.0
+- PHP >= 7.1
 
 ## Install with composer
 
 ``` bash
-$ composer require "michaelhall/link-sharer:~1.1"
+$ composer require michaelhall/link-sharer
 ```
 
 ## Basic usage

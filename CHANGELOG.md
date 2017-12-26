@@ -1,3 +1,5 @@
+## Unreleased
+
 ## [2.0.0]
 - Changed required PHP version to >= 7.1.
 - Changed dependency to DataTypes 2.x.

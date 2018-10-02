@@ -10,13 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
+use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
 
 /**
  * Google Plus sharer.
  *
  * @since 1.0.0
  */
-class GooglePlusSharer
+class GooglePlusSharer implements SharerInterface
 {
     /**
      * Constructs a GooglePlusSharer.

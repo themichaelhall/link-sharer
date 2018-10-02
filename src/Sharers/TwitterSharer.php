@@ -10,13 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
+use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
 
 /**
  * Twitter sharer.
  *
  * @since 1.0.0
  */
-class TwitterSharer
+class TwitterSharer implements SharerInterface
 {
     /**
      * Constructs a TwitterSharer.

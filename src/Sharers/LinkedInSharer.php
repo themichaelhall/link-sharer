@@ -10,13 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
+use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
 
 /**
  * LinkedIn sharer.
  *
  * @since 1.1.0
  */
-class LinkedInSharer
+class LinkedInSharer implements SharerInterface
 {
     /**
      * Constructs a LinkedInSharer.

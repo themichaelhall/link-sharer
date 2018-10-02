@@ -10,14 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
-use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
+use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
  * LinkedIn sharer.
  *
  * @since 1.1.0
  */
-class LinkedInSharer implements SharerInterface
+class LinkedInSharer extends AbstractSharer
 {
     /**
      * Constructs a LinkedInSharer.
@@ -29,8 +29,7 @@ class LinkedInSharer implements SharerInterface
      */
     public function __construct(UrlInterface $url, string $text = '')
     {
-        $this->url = $url;
-        $this->text = $text;
+        parent::__construct($url, $text);
     }
 
     /**
@@ -44,34 +43,12 @@ class LinkedInSharer implements SharerInterface
     {
         $parts = [];
 
-        $parts[] = 'url=' . rawurlencode($this->url->__toString());
+        $parts[] = 'url=' . rawurlencode($this->getUrl()->__toString());
 
-        if ($this->text !== '') {
-            $parts[] = 'title=' . rawurlencode($this->text);
+        if ($this->getText() !== '') {
+            $parts[] = 'title=' . rawurlencode($this->getText());
         }
 
         return Url::parse('https://www.linkedin.com/shareArticle?mini=true&' . implode('&', $parts));
     }
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 1.1.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string
-    {
-        return $this->getShareUrl()->__toString();
-    }
-
-    /**
-     * @var Url My url.
-     */
-    private $url;
-
-    /**
-     * @var string My text.
-     */
-    private $text;
 }

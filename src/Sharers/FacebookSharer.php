@@ -10,14 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
-use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
+use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
  * Facebook sharer.
  *
  * @since 1.0.0
  */
-class FacebookSharer implements SharerInterface
+class FacebookSharer extends AbstractSharer
 {
     /**
      * Constructs a FacebookSharer.
@@ -28,7 +28,7 @@ class FacebookSharer implements SharerInterface
      */
     public function __construct(UrlInterface $url)
     {
-        $this->url = $url;
+        parent::__construct($url);
     }
 
     /**
@@ -40,23 +40,6 @@ class FacebookSharer implements SharerInterface
      */
     public function getShareUrl(): UrlInterface
     {
-        return Url::parse('https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($this->url->__toString()));
+        return Url::parse('https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($this->getUrl()->__toString()));
     }
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 1.0.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string
-    {
-        return $this->getShareUrl()->__toString();
-    }
-
-    /**
-     * @var Url My url.
-     */
-    private $url;
 }

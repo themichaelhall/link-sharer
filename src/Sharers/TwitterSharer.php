@@ -10,14 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
-use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
+use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
  * Twitter sharer.
  *
  * @since 1.0.0
  */
-class TwitterSharer implements SharerInterface
+class TwitterSharer extends AbstractSharer
 {
     /**
      * Constructs a TwitterSharer.
@@ -30,9 +30,7 @@ class TwitterSharer implements SharerInterface
      */
     public function __construct(UrlInterface $url, string $text = '', array $hashtags = [])
     {
-        $this->url = $url;
-        $this->text = $text;
-        $this->hashtags = $hashtags;
+        parent::__construct($url, $text, $hashtags);
     }
 
     /**
@@ -46,45 +44,18 @@ class TwitterSharer implements SharerInterface
     {
         $parts = [];
 
-        if ($this->text !== '') {
-            $parts[] = $this->text;
+        if ($this->getText() !== '') {
+            $parts[] = $this->getText();
         }
 
-        $parts[] = $this->url->__toString();
+        $parts[] = $this->getUrl()->__toString();
 
-        if (count($this->hashtags) > 0) {
+        if (count($this->getHashtags()) > 0) {
             $parts[] = implode(' ', array_map(function (string $hashtag) {
                 return '#' . $hashtag;
-            }, $this->hashtags));
+            }, $this->getHashtags()));
         }
 
         return Url::parse('https://twitter.com/home?status=' . rawurlencode(implode(' ', $parts)));
     }
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 1.0.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string
-    {
-        return $this->getShareUrl()->__toString();
-    }
-
-    /**
-     * @var Url My url.
-     */
-    private $url;
-
-    /**
-     * @var string My text.
-     */
-    private $text;
-
-    /**
-     * @var string[] My hashtags.
-     */
-    private $hashtags;
 }

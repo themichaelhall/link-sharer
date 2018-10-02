@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Tests\Sharers;
 
+use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
 use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
 use PHPUnit\Framework\TestCase;
@@ -15,41 +16,31 @@ class LinkedInSharerTest extends TestCase
 {
     /**
      * Test getShareUrl method.
+     *
+     * @dataProvider getShareUrlDataProvider
+     *
+     * @param UrlInterface $url              The url.
+     * @param string       $text             The text.
+     * @param UrlInterface $expectedShareUrl The expected share url.
      */
-    public function testGetShareUrl()
+    public function testGetShareUrl(UrlInterface $url, string $text, UrlInterface $expectedShareUrl)
     {
-        $twitterSharer = new LinkedInSharer(Url::parse('https://example.com/path/file'));
+        $linkedInSharer = new LinkedInSharer($url, $text);
 
-        self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->getShareUrl()->__toString());
+        self::assertTrue($expectedShareUrl->equals($linkedInSharer->getShareUrl()));
+        self::assertSame($expectedShareUrl->__toString(), $linkedInSharer->__toString());
     }
 
     /**
-     * Test getShareUrl with text method.
+     * Data provider for testGetShareUrl.
+     *
+     * @return array
      */
-    public function testGetShareUrlWithText()
+    public function getShareUrlDataProvider()
     {
-        $twitterSharer = new LinkedInSharer(Url::parse('https://example.com/path/file'), 'Sharing on LinkedIn');
-
-        self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=Sharing%20on%20LinkedIn', $twitterSharer->getShareUrl()->__toString());
-    }
-
-    /**
-     * Test __toString method.
-     */
-    public function testToString()
-    {
-        $twitterSharer = new LinkedInSharer(Url::parse('https://example.com/path/file'));
-
-        self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->__toString());
-    }
-
-    /**
-     * Test __toString method with text.
-     */
-    public function testToStringWithText()
-    {
-        $twitterSharer = new LinkedInSharer(Url::parse('https://example.com/path/file'), 'Sharing on LinkedIn');
-
-        self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=Sharing%20on%20LinkedIn', $twitterSharer->__toString());
+        return [
+            [Url::parse('https://example.com/path/file'), '', Url::parse('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on LinkedIn', Url::parse('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=Sharing%20on%20LinkedIn')],
+        ];
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Tests\Sharers;
 
+use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
 use MichaelHall\LinkSharer\Sharers\TwitterSharer;
 use PHPUnit\Framework\TestCase;
@@ -15,61 +16,36 @@ class TwitterSharerTest extends TestCase
 {
     /**
      * Test getShareUrl method.
+     *
+     * @dataProvider getShareUrlDataProvider
+     *
+     * @param UrlInterface $url              The url.
+     * @param string       $text             The text.
+     * @param string[]     $hashtags         The hashtags.
+     * @param UrlInterface $expectedShareUrl The expected share url.
      */
-    public function testGetShareUrl()
+    public function testGetShareUrl(UrlInterface $url, string $text, array $hashtags, UrlInterface $expectedShareUrl)
     {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'));
+        $twitterSharer = new TwitterSharer($url, $text, $hashtags);
 
-        self::assertSame('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->getShareUrl()->__toString());
+        self::assertTrue($expectedShareUrl->equals($twitterSharer->getShareUrl()));
+        self::assertSame($expectedShareUrl->__toString(), $twitterSharer->__toString());
     }
 
     /**
-     * Test getShareUrl with text method.
+     * Data provider for testGetShareUrl.
+     *
+     * @return array
      */
-    public function testGetShareUrlWithText()
+    public function getShareUrlDataProvider()
     {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter');
-
-        self::assertSame('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->getShareUrl()->__toString());
-    }
-
-    /**
-     * Test getShareUrl method with hash tags.
-     */
-    public function testGetShareUrlWithHashTags()
-    {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['share', 'twitter']);
-
-        self::assertSame('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23share%20%23twitter', $twitterSharer->getShareUrl()->__toString());
-    }
-
-    /**
-     * Test __toString method.
-     */
-    public function testToString()
-    {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'));
-
-        self::assertSame('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->__toString());
-    }
-
-    /**
-     * Test __toString method.
-     */
-    public function testToStringWithText()
-    {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter');
-
-        self::assertSame('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile', $twitterSharer->__toString());
-    }
-
-    /**
-     * Test __toString method with hash tags.
-     */
-    public function testToStringWithHashTags()
-    {
-        $twitterSharer = new TwitterSharer(Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['share', 'twitter']);
-
-        self::assertSame('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23share%20%23twitter', $twitterSharer->__toString());
+        return [
+            [Url::parse('https://example.com/path/file'), '', [], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', [], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), '', ['foo'], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo')],
+            [Url::parse('https://example.com/path/file'), '', ['foo', 'bar'], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo%20%23bar')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo'], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo', 'bar'], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo%20%23bar')],
+        ];
     }
 }

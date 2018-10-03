@@ -24,6 +24,7 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -37,6 +38,7 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -50,5 +52,6 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile&hashtag=%23sharing', $linkSharer->getFacebookSharer()->getShareUrl()->__toString());
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
     }
 }

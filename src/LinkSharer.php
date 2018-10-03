@@ -12,6 +12,7 @@ use DataTypes\Interfaces\UrlInterface;
 use MichaelHall\LinkSharer\Sharers\FacebookSharer;
 use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
 use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
+use MichaelHall\LinkSharer\Sharers\RedditSharer;
 use MichaelHall\LinkSharer\Sharers\TwitterSharer;
 
 /**
@@ -71,6 +72,18 @@ class LinkSharer
     public function getLinkedInSharer(): LinkedInSharer
     {
         return new LinkedInSharer($this->url, $this->text);
+    }
+
+    /**
+     * Returns the Reddit sharer.
+     *
+     * @since 2.1.0
+     *
+     * @return RedditSharer The Reddit sharer.
+     */
+    public function getRedditSharer(): RedditSharer
+    {
+        return new RedditSharer($this->url, $this->text);
     }
 
     /**

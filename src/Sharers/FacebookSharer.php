@@ -24,11 +24,12 @@ class FacebookSharer extends AbstractSharer
      *
      * @since 1.0.0
      *
-     * @param UrlInterface $url The url.
+     * @param UrlInterface $url      The url.
+     * @param array        $hashtags The hashtags.
      */
-    public function __construct(UrlInterface $url)
+    public function __construct(UrlInterface $url, array $hashtags)
     {
-        parent::__construct($url);
+        parent::__construct($url, '', $hashtags);
     }
 
     /**
@@ -40,6 +41,14 @@ class FacebookSharer extends AbstractSharer
      */
     public function getShareUrl(): UrlInterface
     {
-        return Url::parse('https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($this->getUrl()->__toString()));
+        $parts = [];
+
+        $parts[] = 'u=' . rawurlencode($this->getUrl()->__toString());
+
+        if (count($this->getHashtags()) > 0) {
+            $parts[] = 'hashtag=' . rawurlencode('#' . $this->getHashtags()[0]);
+        }
+
+        return Url::parse('https://www.facebook.com/sharer/sharer.php?' . implode('&', $parts));
     }
 }

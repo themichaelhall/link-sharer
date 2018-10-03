@@ -1,5 +1,6 @@
 ## Unreleased
 - Updated Twitter sharer url.
+- Added hashtag functionality to Facebook sharer.
 
 ## [2.0.0] - 2017-12-26
 - Changed required PHP version to >= 7.1.

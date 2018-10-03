@@ -46,7 +46,7 @@ class LinkSharer
      */
     public function getFacebookSharer(): FacebookSharer
     {
-        return new FacebookSharer($this->url);
+        return new FacebookSharer($this->url, $this->hashtags);
     }
 
     /**

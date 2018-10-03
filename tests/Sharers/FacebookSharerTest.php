@@ -20,11 +20,12 @@ class FacebookSharerTest extends TestCase
      * @dataProvider getShareUrlDataProvider
      *
      * @param UrlInterface $url              The url.
+     * @param string[]     $hashtags         The hashtags.
      * @param UrlInterface $expectedShareUrl The expected share url.
      */
-    public function testGetShareUrl(UrlInterface $url, UrlInterface $expectedShareUrl)
+    public function testGetShareUrl(UrlInterface $url, array $hashtags, UrlInterface $expectedShareUrl)
     {
-        $facebookSharer = new FacebookSharer($url);
+        $facebookSharer = new FacebookSharer($url, $hashtags);
 
         self::assertTrue($expectedShareUrl->equals($facebookSharer->getShareUrl()));
         self::assertSame($expectedShareUrl->__toString(), $facebookSharer->__toString());
@@ -38,7 +39,9 @@ class FacebookSharerTest extends TestCase
     public function getShareUrlDataProvider()
     {
         return [
-            [Url::parse('https://example.com/path/file'), Url::parse('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), [], Url::parse('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), ['foo'], Url::parse('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile&hashtag=%23foo')],
+            [Url::parse('https://example.com/path/file'), ['foo', 'bar'], Url::parse('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile&hashtag=%23foo')],
         ];
     }
 }

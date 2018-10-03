@@ -44,18 +44,16 @@ class TwitterSharer extends AbstractSharer
     {
         $parts = [];
 
-        if ($this->getText() !== '') {
-            $parts[] = $this->getText();
-        }
+        $parts[] = 'url=' . rawurlencode($this->getUrl()->__toString());
 
-        $parts[] = $this->getUrl()->__toString();
+        if ($this->getText() !== '') {
+            $parts[] = 'text=' . rawurlencode($this->getText());
+        }
 
         if (count($this->getHashtags()) > 0) {
-            $parts[] = implode(' ', array_map(function (string $hashtag) {
-                return '#' . $hashtag;
-            }, $this->getHashtags()));
+            $parts[] = 'hashtags=' . rawurlencode(implode(',', $this->getHashtags()));
         }
 
-        return Url::parse('https://twitter.com/home?status=' . rawurlencode(implode(' ', $parts)));
+        return Url::parse('https://twitter.com/intent/tweet?' . implode('&', $parts));
     }
 }

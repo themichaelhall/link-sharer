@@ -40,12 +40,12 @@ class TwitterSharerTest extends TestCase
     public function getShareUrlDataProvider()
     {
         return [
-            [Url::parse('https://example.com/path/file'), '', [], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
-            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', [], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
-            [Url::parse('https://example.com/path/file'), '', ['foo'], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo')],
-            [Url::parse('https://example.com/path/file'), '', ['foo', 'bar'], Url::parse('https://twitter.com/home?status=https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo%20%23bar')],
-            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo'], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo')],
-            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo', 'bar'], Url::parse('https://twitter.com/home?status=Sharing%20on%20Twitter%20https%3A%2F%2Fexample.com%2Fpath%2Ffile%20%23foo%20%23bar')],
+            [Url::parse('https://example.com/path/file'), '', [], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', [], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&text=Sharing%20on%20Twitter')],
+            [Url::parse('https://example.com/path/file'), '', ['foo'], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&hashtags=foo')],
+            [Url::parse('https://example.com/path/file'), '', ['foo', 'bar'], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&hashtags=foo%2Cbar')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo'], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&text=Sharing%20on%20Twitter&hashtags=foo')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Twitter', ['foo', 'bar'], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&text=Sharing%20on%20Twitter&hashtags=foo%2Cbar')],
         ];
     }
 }

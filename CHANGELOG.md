@@ -1,3 +1,5 @@
+## Unreleased
+
 ## [2.1.0] - 2018-10-04
 - Updated Twitter sharer url.
 - Added hashtag functionality to Facebook sharer.

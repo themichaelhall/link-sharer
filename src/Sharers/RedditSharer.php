@@ -13,16 +13,16 @@ use DataTypes\Url;
 use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
- * LinkedIn sharer.
+ * Reddit sharer.
  *
- * @since 1.1.0
+ * @since 2.1.0
  */
-class LinkedInSharer extends AbstractSharer
+class RedditSharer extends AbstractSharer
 {
     /**
-     * Constructs a LinkedInSharer.
+     * Constructs a RedditSharer.
      *
-     * @since 1.1.0
+     * @since 2.1.0
      *
      * @param UrlInterface $url  The url.
      * @param string       $text The text.
@@ -35,7 +35,7 @@ class LinkedInSharer extends AbstractSharer
     /**
      * Returns the share url.
      *
-     * @since 1.1.0
+     * @since 2.1.0
      *
      * @return UrlInterface The share url.
      */
@@ -49,6 +49,6 @@ class LinkedInSharer extends AbstractSharer
             $parts[] = 'title=' . rawurlencode($this->getText());
         }
 
-        return Url::parse('https://www.linkedin.com/shareArticle?mini=true&' . implode('&', $parts));
+        return Url::parse('https://www.reddit.com/submit?' . implode('&', $parts));
     }
 }

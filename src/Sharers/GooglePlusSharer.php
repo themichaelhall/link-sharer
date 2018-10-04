@@ -10,13 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
+use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
  * Google Plus sharer.
  *
  * @since 1.0.0
  */
-class GooglePlusSharer
+class GooglePlusSharer extends AbstractSharer
 {
     /**
      * Constructs a GooglePlusSharer.
@@ -27,7 +28,7 @@ class GooglePlusSharer
      */
     public function __construct(UrlInterface $url)
     {
-        $this->url = $url;
+        parent::__construct($url);
     }
 
     /**
@@ -39,23 +40,6 @@ class GooglePlusSharer
      */
     public function getShareUrl(): UrlInterface
     {
-        return Url::parse('https://plus.google.com/share?url=' . rawurlencode($this->url->__toString()));
+        return Url::parse('https://plus.google.com/share?url=' . rawurlencode($this->getUrl()->__toString()));
     }
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 1.0.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string
-    {
-        return $this->getShareUrl()->__toString();
-    }
-
-    /**
-     * @var Url My url.
-     */
-    private $url;
 }

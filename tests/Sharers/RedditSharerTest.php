@@ -6,13 +6,13 @@ namespace MichaelHall\LinkSharer\Tests\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
-use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
+use MichaelHall\LinkSharer\Sharers\RedditSharer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test LinkedInSharer class.
+ * Test RedditSharer class.
  */
-class LinkedInSharerTest extends TestCase
+class RedditSharerTest extends TestCase
 {
     /**
      * Test getShareUrl method.
@@ -25,10 +25,10 @@ class LinkedInSharerTest extends TestCase
      */
     public function testGetShareUrl(UrlInterface $url, string $text, UrlInterface $expectedShareUrl)
     {
-        $linkedInSharer = new LinkedInSharer($url, $text);
+        $redditSharer = new RedditSharer($url, $text);
 
-        self::assertTrue($expectedShareUrl->equals($linkedInSharer->getShareUrl()));
-        self::assertSame($expectedShareUrl->__toString(), $linkedInSharer->__toString());
+        self::assertTrue($expectedShareUrl->equals($redditSharer->getShareUrl()));
+        self::assertSame($expectedShareUrl->__toString(), $redditSharer->__toString());
     }
 
     /**
@@ -39,8 +39,8 @@ class LinkedInSharerTest extends TestCase
     public function getShareUrlDataProvider()
     {
         return [
-            [Url::parse('https://example.com/path/file'), '', Url::parse('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
-            [Url::parse('https://example.com/path/file'), 'Sharing on LinkedIn', Url::parse('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=Sharing%20on%20LinkedIn')],
+            [Url::parse('https://example.com/path/file'), '', Url::parse('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+            [Url::parse('https://example.com/path/file'), 'Sharing on Reddit', Url::parse('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=Sharing%20on%20Reddit')],
         ];
     }
 }

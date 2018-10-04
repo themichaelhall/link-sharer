@@ -10,13 +10,14 @@ namespace MichaelHall\LinkSharer\Sharers;
 
 use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
+use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**
  * Twitter sharer.
  *
  * @since 1.0.0
  */
-class TwitterSharer
+class TwitterSharer extends AbstractSharer
 {
     /**
      * Constructs a TwitterSharer.
@@ -29,9 +30,7 @@ class TwitterSharer
      */
     public function __construct(UrlInterface $url, string $text = '', array $hashtags = [])
     {
-        $this->url = $url;
-        $this->text = $text;
-        $this->hashtags = $hashtags;
+        parent::__construct($url, $text, $hashtags);
     }
 
     /**
@@ -45,45 +44,16 @@ class TwitterSharer
     {
         $parts = [];
 
-        if ($this->text !== '') {
-            $parts[] = $this->text;
+        $parts[] = 'url=' . rawurlencode($this->getUrl()->__toString());
+
+        if ($this->getText() !== '') {
+            $parts[] = 'text=' . rawurlencode($this->getText());
         }
 
-        $parts[] = $this->url->__toString();
-
-        if (count($this->hashtags) > 0) {
-            $parts[] = implode(' ', array_map(function (string $hashtag) {
-                return '#' . $hashtag;
-            }, $this->hashtags));
+        if (count($this->getHashtags()) > 0) {
+            $parts[] = 'hashtags=' . rawurlencode(implode(',', $this->getHashtags()));
         }
 
-        return Url::parse('https://twitter.com/home?status=' . rawurlencode(implode(' ', $parts)));
+        return Url::parse('https://twitter.com/intent/tweet?' . implode('&', $parts));
     }
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 1.0.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string
-    {
-        return $this->getShareUrl()->__toString();
-    }
-
-    /**
-     * @var Url My url.
-     */
-    private $url;
-
-    /**
-     * @var string My text.
-     */
-    private $text;
-
-    /**
-     * @var string[] My hashtags.
-     */
-    private $hashtags;
 }

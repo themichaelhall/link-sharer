@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Tests\Sharers;
 
+use DataTypes\Interfaces\UrlInterface;
 use DataTypes\Url;
 use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
 use PHPUnit\Framework\TestCase;
@@ -15,21 +16,29 @@ class GooglePlusSharerTest extends TestCase
 {
     /**
      * Test getShareUrl method.
+     *
+     * @dataProvider getShareUrlDataProvider
+     *
+     * @param UrlInterface $url              The url.
+     * @param UrlInterface $expectedShareUrl The expected share url.
      */
-    public function testGetShareUrl()
+    public function testGetShareUrl(UrlInterface $url, UrlInterface $expectedShareUrl)
     {
-        $googlePlusSharer = new GooglePlusSharer(Url::parse('https://example.com/path/file'));
+        $googlePlusSharer = new GooglePlusSharer($url);
 
-        self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $googlePlusSharer->getShareUrl()->__toString());
+        self::assertTrue($expectedShareUrl->equals($googlePlusSharer->getShareUrl()));
+        self::assertSame($expectedShareUrl->__toString(), $googlePlusSharer->__toString());
     }
 
     /**
-     * Test __toString method.
+     * Data provider for testGetShareUrl.
+     *
+     * @return array
      */
-    public function testToString()
+    public function getShareUrlDataProvider()
     {
-        $googlePlusSharer = new GooglePlusSharer(Url::parse('https://example.com/path/file'));
-
-        self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $googlePlusSharer->__toString());
+        return [
+            [Url::parse('https://example.com/path/file'), Url::parse('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],
+        ];
     }
 }

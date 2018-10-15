@@ -1,3 +1,5 @@
+## Unreleased
+
 ## [2.2.0] - 2018-10-15
 - Added Tumblr sharer.
 

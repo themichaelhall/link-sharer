@@ -45,6 +45,7 @@ echo $linkSharer->getFacebookSharer();
 echo $linkSharer->getGooglePlusSharer();
 echo $linkSharer->getLinkedInSharer();
 echo $linkSharer->getRedditSharer();
+echo $linkSharer->getTumblrSharer();
 ```
 
 ## License

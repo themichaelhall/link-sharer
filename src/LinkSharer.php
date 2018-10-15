@@ -13,6 +13,7 @@ use MichaelHall\LinkSharer\Sharers\FacebookSharer;
 use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
 use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
 use MichaelHall\LinkSharer\Sharers\RedditSharer;
+use MichaelHall\LinkSharer\Sharers\TumblrSharer;
 use MichaelHall\LinkSharer\Sharers\TwitterSharer;
 
 /**
@@ -84,6 +85,18 @@ class LinkSharer
     public function getRedditSharer(): RedditSharer
     {
         return new RedditSharer($this->url, $this->text);
+    }
+
+    /**
+     * Returns the Tumblr sharer.
+     *
+     * @since 2.2.0
+     *
+     * @return TumblrSharer The Tumblr sharer.
+     */
+    public function getTumblrSharer(): TumblrSharer
+    {
+        return new TumblrSharer($this->url, $this->text, $this->hashtags);
     }
 
     /**

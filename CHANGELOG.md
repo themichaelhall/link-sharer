@@ -1,3 +1,6 @@
+## [2.2.0] - 2018-10-15
+- Added Tumblr sharer.
+
 ## [2.1.0] - 2018-10-04
 - Updated Twitter sharer url.
 - Added hashtag functionality to Facebook sharer.
@@ -13,6 +16,7 @@
 ## 1.0.0 - 2017-06-05
 - First stable revision.
 
+[2.2.0]: https://github.com/themichaelhall/link-sharer/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/themichaelhall/link-sharer/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/themichaelhall/link-sharer/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/themichaelhall/link-sharer/compare/v1.0.0...v1.1.0

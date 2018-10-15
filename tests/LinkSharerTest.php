@@ -25,6 +25,7 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getTumblrSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -39,6 +40,7 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getTumblrSharer()->getShareUrl()->__toString());
     }
 
     /**
@@ -53,5 +55,6 @@ class LinkSharerTest extends TestCase
         self::assertSame('https://plus.google.com/share?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile', $linkSharer->getGooglePlusSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getLinkedInSharer()->getShareUrl()->__toString());
         self::assertSame('https://www.reddit.com/submit?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.', $linkSharer->getRedditSharer()->getShareUrl()->__toString());
+        self::assertSame('https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com%2Fpath%2Ffile&title=I%20am%20sharing%20this.&tags=sharing%2Cthis', $linkSharer->getTumblrSharer()->getShareUrl()->__toString());
     }
 }

@@ -1,9 +1,11 @@
 <?php
+
 /**
  * This file is a part of the link-sharer package.
  *
  * Read more at https://github.com/themichaelhall/link-sharer
  */
+
 declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Sharers\Interfaces;

@@ -36,7 +36,7 @@ class FacebookSharerTest extends TestCase
      *
      * @return array
      */
-    public function getShareUrlDataProvider()
+    public function getShareUrlDataProvider(): array
     {
         return [
             [Url::parse('https://example.com/path/file'), [], Url::parse('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],

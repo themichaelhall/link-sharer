@@ -37,7 +37,7 @@ class TumblrSharerTest extends TestCase
      *
      * @return array
      */
-    public function getShareUrlDataProvider()
+    public function getShareUrlDataProvider(): array
     {
         return [
             [Url::parse('https://example.com/path/file'), '', [], Url::parse('https://www.tumblr.com/widgets/share/tool?canonicalUrl=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],

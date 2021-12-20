@@ -37,7 +37,7 @@ class TwitterSharerTest extends TestCase
      *
      * @return array
      */
-    public function getShareUrlDataProvider()
+    public function getShareUrlDataProvider(): array
     {
         return [
             [Url::parse('https://example.com/path/file'), '', [], Url::parse('https://twitter.com/intent/tweet?url=https%3A%2F%2Fexample.com%2Fpath%2Ffile')],

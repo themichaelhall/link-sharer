@@ -1,4 +1,5 @@
 ## Unreleased
+- Changed required PHP version to >= 7.3.
 
 ## [2.2.0] - 2018-10-15
 - Added Tumblr sharer.

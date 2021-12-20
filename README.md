@@ -12,7 +12,7 @@ Link sharer helper for sharing links on social networks.
 
 ## Requirements
 
-- PHP >= 7.1
+- PHP >= 7.3
 
 ## Install with composer
 

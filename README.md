@@ -1,5 +1,6 @@
 # link-sharer
 
+[![Tests](https://github.com/themichaelhall/link-sharer/workflows/tests/badge.svg?branch=master)](https://github.com/themichaelhall/link-sharer/actions)
 [![Build Status](https://travis-ci.org/themichaelhall/link-sharer.svg?branch=master)](https://travis-ci.org/themichaelhall/link-sharer)
 [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/themichaelhall/link-sharer?branch=master&svg=true)](https://ci.appveyor.com/project/themichaelhall/link-sharer/branch/master)
 [![codecov.io](https://codecov.io/gh/themichaelhall/link-sharer/coverage.svg?branch=master)](https://codecov.io/gh/themichaelhall/link-sharer?branch=master)

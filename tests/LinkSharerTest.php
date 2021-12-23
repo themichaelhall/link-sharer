@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Tests;
 
-use DataTypes\Url;
+use DataTypes\Net\Url;
 use MichaelHall\LinkSharer\LinkSharer;
 use PHPUnit\Framework\TestCase;
 

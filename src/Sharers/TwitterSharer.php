@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Sharers;
 
-use DataTypes\Interfaces\UrlInterface;
-use DataTypes\Url;
+use DataTypes\Net\Url;
+use DataTypes\Net\UrlInterface;
 use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
 
 /**

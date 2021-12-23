@@ -10,7 +10,7 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Sharers\Base;
 
-use DataTypes\Interfaces\UrlInterface;
+use DataTypes\Net\UrlInterface;
 use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
 
 /**

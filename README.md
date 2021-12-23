@@ -25,13 +25,16 @@ $ composer require michaelhall/link-sharer
 
 require __DIR__ . '/vendor/autoload.php';
 
-$url = \DataTypes\Url::parse('http://example.com/');
+use DataTypes\Net\Url;
+use MichaelHall\LinkSharer\LinkSharer;
+
+$url = Url::parse('https://example.com/');
 
 // $text and $hashtags parameters are optional.
 $text = 'My Webpage';
 $hashtags = ['my', 'webpage'];
 
-$linkSharer = new \MichaelHall\LinkSharer\LinkSharer($url, $text, $hashtags);
+$linkSharer = new LinkSharer($url, $text, $hashtags);
 
 // Prints https://twitter.com/intent/tweet?url=...
 echo $linkSharer->getTwitterSharer();

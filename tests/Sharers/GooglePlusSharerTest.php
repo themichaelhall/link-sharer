@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MichaelHall\LinkSharer\Tests\Sharers;
 
-use DataTypes\Interfaces\UrlInterface;
-use DataTypes\Url;
+use DataTypes\Net\Url;
+use DataTypes\Net\UrlInterface;
 use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
 use PHPUnit\Framework\TestCase;
 

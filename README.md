@@ -43,7 +43,6 @@ echo $linkSharer->getTwitterSharer();
 echo $linkSharer->getFacebookSharer();
 
 // And so on...
-echo $linkSharer->getGooglePlusSharer();
 echo $linkSharer->getLinkedInSharer();
 echo $linkSharer->getRedditSharer();
 echo $linkSharer->getTumblrSharer();

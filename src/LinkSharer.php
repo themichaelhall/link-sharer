@@ -56,6 +56,8 @@ class LinkSharer
     /**
      * Returns the Google Plus sharer.
      *
+     * @deprecated
+     *
      * @since 1.0.0
      *
      * @return GooglePlusSharer The Google Plus sharer.

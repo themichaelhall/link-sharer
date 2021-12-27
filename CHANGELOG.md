@@ -1,6 +1,7 @@
 ## Unreleased
 - Changed required PHP version to >= 7.3.
 - Changed required datatypes version to 2.4.
+- Deprecated Google Plus sharer.
 
 ## [2.2.0] - 2018-10-15
 - Added Tumblr sharer.

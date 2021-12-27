@@ -18,7 +18,6 @@ use MichaelHall\LinkSharer\Sharers\Base\AbstractSharer;
  * Google Plus sharer.
  *
  * @deprecated
- *
  * @since 1.0.0
  */
 class GooglePlusSharer extends AbstractSharer

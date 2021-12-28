@@ -1,4 +1,4 @@
-## Unreleased
+## [2.3.0] - 2021-12-28
 - Changed required PHP version to >= 7.3.
 - Changed required datatypes version to 2.4.
 - Deprecated Google Plus sharer.
@@ -21,6 +21,7 @@
 ## 1.0.0 - 2017-06-05
 - First stable revision.
 
+[2.3.0]: https://github.com/themichaelhall/link-sharer/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/themichaelhall/link-sharer/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/themichaelhall/link-sharer/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/themichaelhall/link-sharer/compare/v1.1.0...v2.0.0

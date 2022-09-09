@@ -10,7 +10,7 @@ Link sharer helper for sharing links on social networks.
 
 ## Requirements
 
-- PHP >= 7.3
+- PHP >= 8.0
 
 ## Install with composer
 

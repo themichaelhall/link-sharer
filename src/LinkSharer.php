@@ -12,7 +12,6 @@ namespace MichaelHall\LinkSharer;
 
 use DataTypes\Net\UrlInterface;
 use MichaelHall\LinkSharer\Sharers\FacebookSharer;
-use MichaelHall\LinkSharer\Sharers\GooglePlusSharer;
 use MichaelHall\LinkSharer\Sharers\LinkedInSharer;
 use MichaelHall\LinkSharer\Sharers\RedditSharer;
 use MichaelHall\LinkSharer\Sharers\TumblrSharer;
@@ -51,19 +50,6 @@ class LinkSharer
     public function getFacebookSharer(): FacebookSharer
     {
         return new FacebookSharer($this->url, $this->hashtags);
-    }
-
-    /**
-     * Returns the Google Plus sharer.
-     *
-     * @deprecated
-     * @since 1.0.0
-     *
-     * @return GooglePlusSharer The Google Plus sharer.
-     */
-    public function getGooglePlusSharer(): GooglePlusSharer
-    {
-        return new GooglePlusSharer($this->url);
     }
 
     /**

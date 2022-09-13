@@ -1,5 +1,6 @@
 ## Unreleased
 - Changed required PHP version to >= 8.0.
+- Removed Google Plus sharer.
 
 ## [2.3.0] - 2021-12-28
 - Changed required PHP version to >= 7.3.

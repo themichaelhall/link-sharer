@@ -27,7 +27,7 @@ class FacebookSharer extends AbstractSharer
      * @since 1.0.0
      *
      * @param UrlInterface $url      The url.
-     * @param array        $hashtags The hashtags.
+     * @param string[]     $hashtags The hashtags.
      */
     public function __construct(UrlInterface $url, array $hashtags)
     {

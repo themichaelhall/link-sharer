@@ -94,17 +94,17 @@ abstract class AbstractSharer implements SharerInterface
     }
 
     /**
-     * @var UrlInterface My url.
+     * @var UrlInterface The url.
      */
-    private $url;
+    private UrlInterface $url;
 
     /**
-     * @var string My text.
+     * @var string The text.
      */
-    private $text;
+    private string $text;
 
     /**
-     * @var string[] My hashtags.
+     * @var string[] The hashtags.
      */
-    private $hashtags;
+    private array $hashtags;
 }

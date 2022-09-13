@@ -11,13 +11,14 @@ declare(strict_types=1);
 namespace MichaelHall\LinkSharer\Sharers\Interfaces;
 
 use DataTypes\Net\UrlInterface;
+use Stringable;
 
 /**
  * Common interface for sharers.
  *
  * @since 2.1.0
  */
-interface SharerInterface
+interface SharerInterface extends Stringable
 {
     /**
      * Returns the share url.
@@ -27,13 +28,4 @@ interface SharerInterface
      * @return UrlInterface The share url.
      */
     public function getShareUrl(): UrlInterface;
-
-    /**
-     * Returns the share url as a string.
-     *
-     * @since 2.1.0
-     *
-     * @return string The share url as a string.
-     */
-    public function __toString(): string;
 }

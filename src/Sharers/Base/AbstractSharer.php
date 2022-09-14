@@ -21,6 +21,22 @@ use MichaelHall\LinkSharer\Sharers\Interfaces\SharerInterface;
 abstract class AbstractSharer implements SharerInterface
 {
     /**
+     * Constructs a sharer.
+     *
+     * @since 2.1.0
+     *
+     * @param UrlInterface $url      The url.
+     * @param string       $text     The text (optional).
+     * @param string[]     $hashtags The hashtags (optional).
+     */
+    public function __construct(UrlInterface $url, string $text = '', array $hashtags = [])
+    {
+        $this->url = $url;
+        $this->text = $text;
+        $this->hashtags = $hashtags;
+    }
+
+    /**
      * Returns the share url.
      *
      * @since 2.1.0
@@ -75,22 +91,6 @@ abstract class AbstractSharer implements SharerInterface
     protected function getUrl(): UrlInterface
     {
         return $this->url;
-    }
-
-    /**
-     * Constructs a sharer.
-     *
-     * @since 2.1.0
-     *
-     * @param UrlInterface $url      The url.
-     * @param string       $text     The text (optional).
-     * @param string[]     $hashtags The hashtags (optional).
-     */
-    protected function __construct(UrlInterface $url, string $text = '', array $hashtags = [])
-    {
-        $this->url = $url;
-        $this->text = $text;
-        $this->hashtags = $hashtags;
     }
 
     /**
